@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: lion_api_production
-  username: lion_api
-  password: <%= ENV['LION_API_DATABASE_PASSWORD'] %>
+  hostname: ec2-54-221-254-72.compute-1.amazonaws.com
+  database: de7ejui848vrui
+  username: ymxlecxgowlraq
+  password: 65a74c4e2e6df0f6976a41bed4afd98b292d820912a7afdad6c5909f6039620d
