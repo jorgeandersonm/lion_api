@@ -1,6 +1,10 @@
 class IndividualsController < ApplicationController
   before_action :authenticate_individual!
-	
+
+	def index
+    render :json => Individual.all
+  end
+
 	def show
   	individual = Individual.find(params[:id])
 
