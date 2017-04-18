@@ -1,17 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technologies used:
 
-Things you may want to cover:
+* Rails 5.0.2
 
-* Ruby version
+* Ruby 2.3.0
 
-* System dependencies
+* FactoryGirl
 
-* Configuration
+* RSpec
 
-* Database creation
+* Postgresql
+
+* Heroku
 
 * Database initialization
 
@@ -21,4 +22,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+# Lion API
+
+https://lion-api.herokuapp.com
