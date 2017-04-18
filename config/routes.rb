@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
 	resources :goods
 
-  get '/goods/list/:id', to: 'goods#list'
- # get '/individuals/:id', to: 'individuals#show'
+  post '/goods/list', to: 'goods#list'
+ 	get '/individuals/:id', to: 'individuals#show'
 
   get '/individuals/:city_name/by_city', to: 'individuals#by_city'
   get '/individuals/by_goods_value', to: 'individuals#by_goods_value'

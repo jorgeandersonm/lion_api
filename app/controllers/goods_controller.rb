@@ -1,8 +1,8 @@
 class GoodsController < ApplicationController
-before_action :authenticate_individual!
+  before_action :authenticate_individual!
+
 	def create
-    good = Good.new(good_params)
-    good.individual_id = current_individual.id if current_individual
+    good = current_individual.goods.new(good_params)
     if good.save
     	render_create_success
     else
@@ -11,8 +11,9 @@ before_action :authenticate_individual!
   end
 		
 	def destroy
-		good = Good.find(params[:id])
-		if good.delete
+		good = Good.find_by_id_and_individual_id(params[:id], current_individual.id) if current_individual
+		if good
+			good.delete
 			render_destroy_success
 		else
 			render_failed
@@ -30,12 +31,20 @@ before_action :authenticate_individual!
 
   def show
   	good = Good.find(params[:id])
-  	render :json => good
+  	if good
+  	 render :json => good 
+  	else
+  	  render_failed
+  	end
   end
 
 	def list
-  	goods = Good.where(:individual_id => params[:id])
-  	render :json => goods
+  	goods = Good.where(:individual_id => current_individual.id) if current_individual
+  	if goods 
+  		render :json => goods
+  	else 
+  	 render_failed
+  	end
   end
 
   def render_create_success

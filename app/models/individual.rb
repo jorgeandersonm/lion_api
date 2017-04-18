@@ -7,10 +7,32 @@ class Individual < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  has_many :goods
+
+  validates_presence_of :name, :address, :city, :gender, :age
+
+  validates_numericality_of :age, greater_than: 0
+
+  enum gender: {
+  	male: 0,
+  	female: 1
+  }
 
   def sum_values_of_goods
-  	goods = Good.where(:individual_id => self.id)
+  	goods.sum(:value).to_f
+  end
 
-  	total = goods.sum(:value)
+  class << self 
+    def by_city(city_name)
+      Individual.where(city: city_name)
+    end
+
+    def by_goods_value
+      individuals_by_value = Array.new
+      Individual.all.each do |individual|
+        individuals_by_value << individual if individual.sum_values_of_goods >= 100000
+      end
+      individuals_by_value
+    end
   end
 end
