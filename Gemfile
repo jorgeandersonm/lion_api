@@ -25,6 +25,8 @@ gem 'puma', '~> 3.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'faker'
+
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
@@ -39,7 +41,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'faker'
   gem 'shoulda-matchers', '~> 3.1'
 	gem 'simplecov', require: false
 	gem 'rails-controller-testing'
